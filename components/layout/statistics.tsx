@@ -43,8 +43,8 @@ export default async function Statistics() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 md:mb-20">
           <SectionHeader
-            title="A Track Record Of Market Dominance"
-            description="We let the numbers do the talking. Explore the strategies, campaigns and digital experiences that transformed ambitious goals into measurable business growth."
+            title="Proven in the Real World"
+            description="Good work looks good. Great work moves the business forward. Here's what we've built and the impact it's made."
           />
 
           <div className="mt-8">

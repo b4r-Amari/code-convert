@@ -69,17 +69,23 @@ function AnimatedNumber({
   const springValue = useSpring(motionValue, { damping: 50, stiffness: 100 });
   const [displayValue, setDisplayValue] = useState('0');
 
+  const isNumeric = !isNaN(numericValue);
+
   useEffect(() => {
-    if (isInView) {
+    if (isInView && isNumeric) {
       motionValue.set(numericValue);
     }
-  }, [isInView, motionValue, numericValue]);
+  }, [isInView, motionValue, numericValue, isNumeric]);
 
   useEffect(() => {
     return springValue.on('change', (latest) => {
       setDisplayValue(latest.toFixed(numericValue % 1 !== 0 ? 1 : 0));
     });
   }, [springValue, numericValue]);
+
+  if (!isNumeric) {
+    return <>{value}</>;
+  }
 
   return (
     <>

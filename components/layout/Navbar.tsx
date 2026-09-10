@@ -2,12 +2,67 @@
 
 import { motion } from 'motion/react';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function Navbar() {
   const [isHidden, setIsHidden] = useState(false);
   const [lastScroll, setLastScroll] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const logoRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const logo = logoRef.current;
+    if (!logo) return;
+
+    const FLIP_DURATION = 500;
+    const PAUSE_DURATION = 20000;
+    const FLIPS_PER_SET = 2;
+
+    let angle = 0;
+    let running = true;
+    let rafId: number;
+    let timerId: ReturnType<typeof setTimeout>;
+
+    function easeInOut(t: number) {
+      return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+    }
+
+    function doFlip(flipsLeft: number, onDone: () => void) {
+      if (!running) return;
+      if (flipsLeft === 0) { onDone(); return; }
+      const startAngle = angle;
+      const targetAngle = angle - 180;
+      const start = performance.now();
+      function tick(now: number) {
+        if (!running) return;
+        const t = Math.min((now - start) / FLIP_DURATION, 1);
+        angle = startAngle + (targetAngle - startAngle) * easeInOut(t);
+        logo!.style.transform = `rotateY(${angle}deg)`;
+        if (t < 1) {
+          rafId = requestAnimationFrame(tick);
+        } else {
+          angle = targetAngle;
+          logo!.style.transform = `rotateY(${angle}deg)`;
+          timerId = setTimeout(() => doFlip(flipsLeft - 1, onDone), 80);
+        }
+      }
+      rafId = requestAnimationFrame(tick);
+    }
+
+    function animateSets() {
+      if (!running) return;
+      doFlip(FLIPS_PER_SET, () => {
+        timerId = setTimeout(() => { if (running) animateSets(); }, PAUSE_DURATION);
+      });
+    }
+
+    animateSets();
+    return () => {
+      running = false;
+      cancelAnimationFrame(rafId);
+      clearTimeout(timerId);
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,8 +98,10 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14">
           <a href="/" className="flex items-center gap-2 shrink-0">
-            <div className="flex h-6 sm:h-7 px-1.5 sm:px-2 rounded-lg items-center justify-center bg-[#FF1E1E] shrink-0">
-              <span className="font-bold text-[9px] sm:text-[10px] tracking-tighter text-white">C&C</span>
+            <div style={{ perspective: '1000px' }}>
+              <div ref={logoRef} className="flex h-6 sm:h-7 px-1.5 sm:px-2 rounded-lg items-center justify-center bg-[#FF1E1E] shrink-0" style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}>
+                <span className="font-bold text-[9px] sm:text-[10px] tracking-tighter text-white">C&C</span>
+              </div>
             </div>
             <div className="flex flex-col justify-center">
               <span className="text-xs sm:text-sm font-bold tracking-tight truncate uppercase leading-tight">Code & Convert</span>
