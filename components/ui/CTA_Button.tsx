@@ -60,7 +60,7 @@ export default function CTAButton({
             transition-all duration-300 relative overflow-hidden group
             ${
               isPrimary
-                ? 'bg-[#FF1E1E] text-white hover:bg-white hover:text-black active:bg-white active:text-black active:scale-[0.98]'
+                ? 'bg-[#FF1E1E] text-white hover:!bg-white hover:!text-black active:!bg-white active:!text-black active:scale-[0.98]'
                 : 'bg-white/10 text-white border border-white/20 hover:bg-white/20 hover:border-white/30'
             }
             ${className}

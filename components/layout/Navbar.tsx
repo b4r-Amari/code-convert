@@ -119,7 +119,7 @@ export default function Navbar() {
           <div className="flex items-center gap-2">
             <a
               href="/contact-us"
-              className="inline-flex items-center gap-1 text-[14px] font-bold px-3.5 py-2 rounded-[10px] bg-[#FF1E1E] text-white hover:bg-white hover:text-[#050505] hover:-translate-y-px hover:scale-[1.02] hover:shadow-[0_0_32px_rgba(255,255,255,0.25),0_8px_24px_rgba(0,0,0,0.3)] active:bg-white active:text-[#050505] active:scale-[0.98] transition-all duration-300 group whitespace-nowrap"
+              className="inline-flex items-center gap-1 text-[14px] font-bold px-3.5 py-2 rounded-[10px] bg-[#FF1E1E] text-white hover:!bg-white hover:!text-[#050505] hover:-translate-y-px hover:scale-[1.02] hover:shadow-[0_0_32px_rgba(255,255,255,0.25),0_8px_24px_rgba(0,0,0,0.3)] active:!bg-white active:!text-[#050505] active:scale-[0.98] transition-all duration-300 group whitespace-nowrap"
             >
               Book 1:1 Meeting
               <ArrowUpRight className="w-2.5 sm:w-3 h-2.5 sm:h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300 hidden sm:block" />
@@ -205,7 +205,7 @@ export default function Navbar() {
               <a
                 href="/contact-us"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full inline-flex items-center justify-center gap-2 text-[13px] font-bold px-6 py-3.5 rounded-[10px] bg-[#FF1E1E] text-white hover:bg-white hover:text-[#050505] active:bg-white active:text-[#050505] active:scale-[0.98] transition-all duration-300 uppercase tracking-widest"
+                className="w-full inline-flex items-center justify-center gap-2 text-[13px] font-bold px-6 py-3.5 rounded-[10px] bg-[#FF1E1E] text-white hover:!bg-white hover:!text-[#050505] active:!bg-white active:!text-[#050505] active:scale-[0.98] transition-all duration-300 uppercase tracking-widest"
               >
                 Book 1:1 Meeting
                 <ArrowUpRight className="w-3.5 h-3.5" />
