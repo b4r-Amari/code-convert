@@ -63,15 +63,15 @@ export default function Process() {
           </motion.p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+        <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 overflow-x-auto sm:overflow-x-visible pb-4 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0 snap-x snap-mandatory sm:snap-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {steps.map((step, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 32 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="group backdrop-blur-[16px] rounded-2xl p-4 md:p-5 lg:p-6 relative hover:-translate-y-[2px] transition-all duration-400"
+              viewport={{ once: true, amount: 0.05 }}
+              transition={{ delay: i * 0.08, duration: 0.5 }}
+              className="group backdrop-blur-[16px] rounded-2xl p-4 md:p-5 lg:p-6 relative hover:-translate-y-[2px] transition-all duration-400 flex-none w-[78vw] sm:w-auto snap-start sm:snap-align-none"
               style={{
                 background: 'linear-gradient(135deg, rgba(255,30,30,0.07) 0%, rgba(5,5,5,0.5) 60%)',
                 border: '1px solid rgba(255,30,30,0.18)',

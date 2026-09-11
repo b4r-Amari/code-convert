@@ -60,7 +60,7 @@ export default function SelectedWork({ projects }: SelectedWorkProps) {
         >
           <a
             href="/case-studies"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#FF1E1E] hover:bg-[#FF1E1E]/90 text-white font-bold rounded-lg transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#FF1E1E] text-white font-bold rounded-full hover:bg-white hover:text-[#050505] hover:-translate-y-px hover:scale-[1.02] hover:shadow-[0_0_32px_rgba(255,255,255,0.25),0_8px_24px_rgba(0,0,0,0.3)] active:scale-[0.98] transition-all duration-300"
           >
             Explore Our Work →
           </a>
@@ -122,7 +122,7 @@ function ProjectCard({ project, index }: { project: CaseStudy; index: number }) 
         <div className="text-small text-neutral-400 font-bold leading-relaxed mb-4 md:mb-5" dangerouslySetInnerHTML={{ __html: (project.results ?? '').substring(0, 150) + '...' }} />
         <div className="flex flex-wrap gap-1.5">
           {project.services?.slice(0, 3).map((tag) => (
-            <span key={tag} className="text-[10px] font-bold text-neutral-600 px-2.5 py-1 rounded-md bg-white/3 uppercase tracking-wider">
+            <span key={tag} className="text-[10px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-md text-white/60 bg-white/[0.07] border border-white/[0.12]">
               {tag}
             </span>
           ))}

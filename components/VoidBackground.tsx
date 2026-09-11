@@ -134,6 +134,8 @@ export default function VoidBackground() {
   const redOverlayRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef(0);
   const scrollVelRef = useRef(0);
+  const isPausedRef = useRef(false);
+  const resumeLoopRef = useRef<() => void>(() => {});
 
   useEffect(() => {
     const handleScroll = (e: any) => {
@@ -153,6 +155,13 @@ export default function VoidBackground() {
           const animOpacity = 1 - t;
           if (animLayerRef.current) animLayerRef.current.style.opacity = String(animOpacity);
           if (redOverlayRef.current) redOverlayRef.current.style.opacity = String(t);
+
+          if (t >= 1 && !isPausedRef.current) {
+            isPausedRef.current = true;
+          } else if (t < 1 && isPausedRef.current) {
+            isPausedRef.current = false;
+            resumeLoopRef.current();
+          }
         }
       }
     };
@@ -320,6 +329,7 @@ export default function VoidBackground() {
 
     let frameId: number;
     const loop = () => {
+      if (isPausedRef.current) return;
       frameId = requestAnimationFrame(loop);
       const t = performance.now() * 0.001;
       const st = getState(scrollRef.current);
@@ -354,6 +364,7 @@ export default function VoidBackground() {
       ren.render(scene, cam);
     };
 
+    resumeLoopRef.current = loop;
     loop();
 
     return () => {
