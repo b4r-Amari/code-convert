@@ -47,7 +47,7 @@ const jsonLd = {
       url: process.env.NEXT_PUBLIC_SITE_URL,
       logo: `${process.env.NEXT_PUBLIC_SITE_URL}/icon1.png`,
       description: 'We Build, Market & Scale Digital Brands. Expert web design, e-commerce solutions, and digital marketing services.',
-      email: 'hello@codeandconvert.co.za',
+      email: 'info@codeconvert.co.za',
       sameAs: [],
       areaServed: 'Worldwide',
       serviceType: ['Web Design', 'Web Development', 'Digital Marketing', 'SEO', 'E-commerce'],

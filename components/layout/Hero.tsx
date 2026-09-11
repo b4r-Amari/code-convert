@@ -45,7 +45,7 @@ export default function Hero({ children }: { children?: React.ReactNode }) {
           <motion.p
             {...fadeInUp}
             transition={{ ...fadeInUp.transition, delay: 0.1 }}
-            className="text-body text-neutral-300 leading-relaxed max-w-lg mx-auto mb-6 md:mb-8 lg:mb-10 font-bold drop-shadow-[0_4px_24px_rgba(0,0,0,1)] text-shadow-sm px-4"
+            className="text-body text-neutral-400 leading-relaxed max-w-lg mx-auto mb-6 md:mb-8 lg:mb-10 font-bold drop-shadow-[0_4px_24px_rgba(0,0,0,1)] text-shadow-sm px-4"
           >
             From websites and e-commerce to content, campaigns and ongoing marketing, we give your business one team to plan, execute and grow your marketing.
           </motion.p>

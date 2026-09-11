@@ -1,47 +1,101 @@
 'use client';
 
 import { motion } from 'motion/react';
-import { BarChart3, Search, MousePointer2, Mail, Video, PieChart } from 'lucide-react';
+import { Printer, MapPin } from 'lucide-react';
 import React, { useState } from 'react';
+import type { LucideIcon } from 'lucide-react';
 
-const services = [
+const KlaviyoIcon = () => (
+  <svg viewBox="0 0 48 48" width="18" height="18" xmlns="http://www.w3.org/2000/svg">
+    <rect width="48" height="48" rx="8" fill="#1A1A1A"/>
+    <text x="9" y="34" fontFamily="Arial, sans-serif" fontWeight="900" fontSize="28" fill="white">K</text>
+  </svg>
+);
+
+type Logo = { name: string; node: React.ReactNode };
+type ServiceItem = {
+  icon?: LucideIcon;
+  logos?: Logo[];
+  shopifyPartner?: boolean;
+  accent: string;
+  title: string;
+  description: string;
+  tags: string[];
+};
+
+const BrandImg = ({ src, alt }: { src: string; alt: string }) => (
+  <img src={src} alt={alt} width={28} height={28} className="w-full h-full object-contain" />
+);
+
+const services: ServiceItem[] = [
   {
-    icon: BarChart3,
-    title: 'Paid Acquisition',
-    description: 'Hyper-targeted Meta, Google, and TikTok campaigns designed for sustainable customer acquisition cost (CAC).',
-    tags: ['Google Ads', 'Meta Ads', 'TikTok']
+    logos: [
+      { name: 'Figma', node: <BrandImg src="/brand-logos/figma.svg" alt="Figma" /> },
+      { name: 'React', node: <BrandImg src="/brand-logos/react.svg" alt="React" /> },
+      { name: 'Next.js', node: <BrandImg src="/brand-logos/nextjs.svg" alt="Next.js" /> },
+    ],
+    accent: '#3B82F6',
+    title: 'Web Design & Development',
+    description: 'Websites built or remodelled to represent your brand, communicate your value and turn visitors into customers.',
+    tags: ['Web Design', 'Development', 'UX/UI'],
   },
   {
-    icon: Search,
-    title: 'Technical SEO',
-    description: 'Dominate search results with structural optimisation, authoritative link building, and intent-driven content.',
-    tags: ['Audits', 'On-Page', 'Off-Page']
+    logos: [{ name: 'Shopify', node: <BrandImg src="/brand-logos/shopify.svg" alt="Shopify" /> }],
+    shopifyPartner: true,
+    accent: '#96BF47',
+    title: 'E-Commerce Solutions',
+    description: 'From Shopify builds to optimisation, we create e-commerce experiences designed to make buying simple and selling easier.',
+    tags: ['Shopify', 'E-Commerce', 'Conversion'],
   },
   {
-    icon: MousePointer2,
-    title: 'Conversion Optimisation',
-    description: 'Continuous A/B testing and user journey refinements to extract maximum value from existing traffic.',
-    tags: ['A/B Testing', 'UX', 'Heatmaps']
+    logos: [
+      { name: 'Instagram', node: <BrandImg src="/brand-logos/instagram.svg" alt="Instagram" /> },
+      { name: 'Facebook', node: <BrandImg src="/brand-logos/facebook.svg" alt="Facebook" /> },
+      { name: 'TikTok', node: <BrandImg src="/brand-logos/tiktok.svg" alt="TikTok" /> },
+      { name: 'LinkedIn', node: <BrandImg src="/brand-logos/linkedin.svg" alt="LinkedIn" /> },
+    ],
+    accent: '#E1306C',
+    title: 'Social Media Management',
+    description: 'Keep your brand visible and relevant with strategic content, consistent publishing and ongoing community management.',
+    tags: ['Strategy', 'Content', 'Management'],
   },
   {
-    icon: Mail,
-    title: 'Email & SMS',
-    description: 'Build owned revenue channels with automated lifecycle flows and segmented campaign broadcasts.',
-    tags: ['Klaviyo', 'Flows', 'Retention']
+    logos: [
+      { name: 'Google Ads', node: <BrandImg src="/brand-logos/google-ads.svg" alt="Google Ads" /> },
+      { name: 'Meta', node: <BrandImg src="/brand-logos/meta.svg" alt="Meta" /> },
+    ],
+    accent: '#4285F4',
+    title: 'Paid Advertising',
+    description: 'Put your business in front of the right people with targeted campaigns across the platforms where your customers spend their time.',
+    tags: ['Meta Ads', 'Google Ads', 'Campaigns'],
   },
   {
-    icon: Video,
-    title: 'Creative Studio',
-    description: 'High-converting ad creatives, from rapid-fire UGC to polished brand videos designed strictly for performance.',
-    tags: ['Video Ads', 'Static', 'UGC']
+    logos: [
+      { name: 'Klaviyo', node: <KlaviyoIcon /> },
+      { name: 'Adobe', node: <BrandImg src="/brand-logos/adobe.svg" alt="Adobe" /> },
+    ],
+    accent: '#FF4500',
+    title: 'Email Marketing',
+    description: 'Turn your audience into repeat customers with strategic campaigns, automated journeys and meaningful communication.',
+    tags: ['Campaigns', 'Automation', 'Retention'],
   },
   {
-    icon: PieChart,
-    title: 'Data & Attribution',
-    description: 'Clear, actionable dashboards resolving multi-touch attribution so you know exactly what drives revenue.',
-    tags: ['GA4', 'Dashboards', 'Attribution']
-  }
+    icon: Printer,
+    accent: '#F59E0B',
+    title: 'Traditional Marketing',
+    description: 'Take your brand beyond the screen with print, signage, branded materials and marketing that people can see in the real world.',
+    tags: ['Print', 'Signage', 'Branding'],
+  },
+  {
+    icon: MapPin,
+    accent: '#F59E0B',
+    title: 'OOH / DOOH',
+    description: 'Put your brand where people are with strategically placed outdoor and digital outdoor advertising that gets noticed.',
+    tags: ['OOH', 'DOOH', 'Placement'],
+  },
 ];
+
+/* ── Component ── */
 
 export default function Services() {
   return (
@@ -53,7 +107,7 @@ export default function Services() {
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-small font-bold tracking-wide uppercase border border-white/5 bg-white/[0.02] text-white/40 mb-4 md:mb-5 mx-auto"
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-small font-bold tracking-wide uppercase border border-white/20 bg-white/[0.02] text-white/60 mb-4 md:mb-5 mx-auto"
           >
             What We Do
           </motion.div>
@@ -64,16 +118,16 @@ export default function Services() {
             transition={{ delay: 0.1 }}
             className="text-h2 font-bold tracking-tight mb-3 md:mb-4 px-4"
           >
-            Full-funnel marketing<br /><span className="bg-[linear-gradient(135deg,#FF1E1E_0%,#FF5555_50%,#FF1E1E_100%)] bg-clip-text text-transparent">capabilities</span>
+            Built For Every Side<br className="hidden sm:block" /><span className="bg-[linear-gradient(135deg,#FF1E1E_0%,#FF5555_50%,#FF1E1E_100%)] bg-clip-text text-transparent"> Of Your Marketing</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-body text-neutral-400 max-w-md mx-auto font-bold px-4"
+            className="text-body text-neutral-400 font-bold max-w-xl mx-auto px-4"
           >
-            We cover every touchpoint of your customer's journey with data-backed strategies.
+            Your brand needs more than a website or a social media presence. We bring together the digital channels and marketing services that help your business show up, connect with customers and keep moving forward.
           </motion.p>
         </div>
 
@@ -87,8 +141,16 @@ export default function Services() {
   );
 }
 
-function ServiceCard({ service, index }: { service: typeof services[0]; index: number }) {
+function hexToRgb(hex: string) {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return `${r}, ${g}, ${b}`;
+}
+
+function ServiceCard({ service, index }: { service: ServiceItem; index: number }) {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const rgb = hexToRgb(service.accent);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -97,31 +159,61 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 32 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.1 }}
+      viewport={{ once: true, amount: 0.01, margin: "0px 0px 120px 0px" }}
+      transition={{ delay: Math.min(index * 0.07, 0.2), duration: 0.5 }}
       onMouseMove={handleMouseMove}
-      className="relative overflow-hidden group bg-[#050505]/40 border border-white/5 backdrop-blur-[16px] rounded-2xl p-5 md:p-6 lg:p-7 hover:bg-[#050505]/60 hover:border-[#FF1E1E]/10 hover:-translate-y-[2px] transition-all duration-400"
+      className="relative overflow-hidden group backdrop-blur-[16px] rounded-2xl p-5 md:p-6 lg:p-7 hover:-translate-y-[2px] transition-all duration-400"
+      style={{
+        background: `linear-gradient(135deg, rgba(${rgb}, 0.06) 0%, rgba(5,5,5,0.5) 60%)`,
+        border: `1px solid rgba(${rgb}, 0.14)`,
+      }}
     >
       <div
         className="absolute w-[300px] h-[300px] rounded-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 -translate-x-1/2 -translate-y-1/2 z-0"
         style={{
-          background: 'radial-gradient(circle, rgba(255,30,30,0.06) 0%, transparent 70%)',
+          background: `radial-gradient(circle, rgba(${rgb}, 0.08) 0%, transparent 70%)`,
           left: `${mousePos.x}px`,
-          top: `${mousePos.y}px`
+          top: `${mousePos.y}px`,
         }}
       />
 
       <div className="relative z-10">
-        <div className="w-10 md:w-11 h-10 md:h-11 rounded-xl flex items-center justify-center mb-4 md:mb-5 bg-[#FF1E1E]/10 border border-[#FF1E1E]/20">
-          <service.icon className="w-4.5 md:w-5 h-4.5 md:h-5 text-[#FF1E1E]" />
-        </div>
+        {service.logos ? (
+          <div className="flex items-center gap-1.5 mb-4 md:mb-5 flex-wrap">
+            {service.logos.map((logo) => (
+              <div
+                key={logo.name}
+                className="w-7 h-7 rounded-lg flex items-center justify-center overflow-hidden"
+                style={{ background: `rgba(${rgb}, 0.05)`, border: `1px solid rgba(${rgb}, 0.12)` }}
+              >
+                {logo.node}
+              </div>
+            ))}
+            {service.shopifyPartner && (
+              <span className="text-[10px] font-bold tracking-wide px-2 py-1 rounded-md border border-[#96BF47]/30 text-[#96BF47] bg-[#96BF47]/5 uppercase ml-1">
+                Partner
+              </span>
+            )}
+          </div>
+        ) : service.icon ? (
+          <div
+            className="w-8 h-8 rounded-lg flex items-center justify-center mb-4 md:mb-5"
+            style={{ background: `rgba(${rgb}, 0.1)`, border: `1px solid rgba(${rgb}, 0.2)` }}
+          >
+            <service.icon className="w-4 h-4" style={{ color: service.accent }} />
+          </div>
+        ) : null}
+
         <h3 className="text-h3 font-bold tracking-tight mb-2">{service.title}</h3>
-        <p className="text-small text-neutral-500 leading-relaxed mb-4 md:mb-5">{service.description}</p>
+        <p className="text-small text-neutral-400 font-bold leading-relaxed mb-4 md:mb-5">{service.description}</p>
         <div className="flex flex-wrap gap-1.5">
           {service.tags.map((tag) => (
-            <span key={tag} className="text-[10px] text-neutral-600 px-2 py-0.5 rounded bg-white/[0.03] uppercase tracking-wider font-bold">
+            <span
+              key={tag}
+              className="text-[10px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-md text-white/60 bg-white/[0.07] border border-white/[0.12]"
+            >
               {tag}
             </span>
           ))}

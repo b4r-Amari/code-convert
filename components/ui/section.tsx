@@ -68,7 +68,7 @@ export function SectionHeader({ subtitle, title, description, className = '' }: 
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-gray-400 text-body leading-relaxed max-w-3xl mx-auto"
+          className="text-neutral-400 font-bold text-body leading-relaxed max-w-3xl mx-auto"
         >
           {description}
         </motion.p>

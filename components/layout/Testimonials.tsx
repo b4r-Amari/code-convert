@@ -17,7 +17,7 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-small font-bold tracking-wide uppercase border border-white/5 bg-white/2 text-white/40 mb-4 md:mb-5 mx-auto"
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-small font-bold tracking-wide uppercase border border-white/20 bg-white/2 text-white/60 mb-4 md:mb-5 mx-auto"
           >
             Partners
           </motion.div>
@@ -28,7 +28,7 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
             transition={{ delay: 0.1 }}
             className="text-h2 font-bold tracking-tight mb-3 md:mb-4 px-4"
           >
-            Trusted by<br /><span className="bg-[linear-gradient(135deg,#FF1E1E_0%,#FF5555_50%,#FF1E1E_100%)] bg-clip-text text-transparent">industry leaders</span>
+            The Brands We&apos;re Proud<br className="hidden sm:block" /><span className="bg-[linear-gradient(135deg,#FF1E1E_0%,#FF5555_50%,#FF1E1E_100%)] bg-clip-text text-transparent"> to Work With</span>
           </motion.h2>
         </div>
 
@@ -36,13 +36,19 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-8 lg:gap-14 mb-10 sm:mb-12 md:mb-16"
+          className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 md:gap-16"
         >
-          {testimonials.slice(0, 3).map((t) => (
-            <span key={t.id} className="text-body font-bold tracking-tighter text-neutral-500 hover:text-white transition-colors cursor-pointer capitalise">
-              {t.client}
-            </span>
-          ))}
+          <img
+            src="/brand-logos/peak-activewear.png"
+            alt="Peak Activewear"
+            className="h-5 sm:h-6 md:h-6 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
+          />
+          <img
+            src="/brand-logos/thriveearth-transparent.png"
+            alt="ThriveEarth Hydroseeding"
+            className="h-14 sm:h-16 md:h-20 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
+            style={{ filter: 'grayscale(1) invert(1)' }}
+          />
         </motion.div>
 
         <TestimonialsGrid testimonials={testimonials} />

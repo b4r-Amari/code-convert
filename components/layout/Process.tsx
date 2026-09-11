@@ -5,27 +5,27 @@ import { motion } from 'motion/react';
 const steps = [
   {
     number: '01',
-    title: 'Audit & Strategy',
-    description: 'We deep-dive into your analytics, past campaigns, and competitors to map out a clear growth trajectory.',
-    timeline: 'Week 1'
+    title: 'Discover',
+    description: 'We start with your business, your objectives, your audience and the challenges standing in the way.',
+    timeline: 'GET THE FULL PICTURE'
   },
   {
     number: '02',
-    title: 'Setup & Tracking',
-    description: 'Fixing the plumbing. We ensure attribution is flawless and tracking pixels capture every user action accurately.',
-    timeline: 'Week 2'
+    title: 'Strategise',
+    description: 'We identify the priorities, opportunities and channels that will have the greatest impact — then turn them into an actionable plan.',
+    timeline: 'SET THE DIRECTION'
   },
   {
     number: '03',
-    title: 'Launch & Test',
-    description: 'Deploying initial campaigns, rapid creative testing, and gathering structural data to find winning angles.',
-    timeline: 'Week 3–4'
+    title: 'Execute',
+    description: 'We put the plan into motion, from websites and campaigns to content, creative and customer communications.',
+    timeline: 'MAKE IT HAPPEN'
   },
   {
     number: '04',
-    title: 'Scale & Optimise',
-    description: 'Cutting losers and scaling winners. Continuous CRO and budget allocation towards the highest ROAS channels.',
-    timeline: 'Ongoing ✓',
+    title: 'Grow',
+    description: 'We review what\'s working, identify what\'s not and make informed adjustments to keep your marketing moving in the right direction.',
+    timeline: 'KEEP GETTING BETTER',
     highlight: true
   }
 ];
@@ -39,7 +39,7 @@ export default function Process() {
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-small font-bold tracking-wide uppercase border border-white/5 bg-white/[0.02] text-white/40 mb-4 md:mb-5 mx-auto"
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-small font-bold tracking-wide uppercase border border-white/20 bg-white/[0.02] text-white/60 mb-4 md:mb-5 mx-auto"
           >
             Our Method
           </motion.div>
@@ -50,8 +50,17 @@ export default function Process() {
             transition={{ delay: 0.1 }}
             className="text-h2 font-bold tracking-tight mb-3 md:mb-4 px-4"
           >
-            The blueprint to<br /><span className="bg-[linear-gradient(135deg,#FF1E1E_0%,#FF5555_50%,#FF1E1E_100%)] bg-clip-text text-transparent">profitable scale</span>
+            A Smarter Way<br /><span className="bg-[linear-gradient(135deg,#FF1E1E_0%,#FF5555_50%,#FF1E1E_100%)] bg-clip-text text-transparent">To Do Marketing</span>
           </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-body text-neutral-400 font-bold max-w-xl mx-auto px-4"
+          >
+            We keep the process focused, collaborative and practical — bringing strategy, creative and execution together so every piece of marketing has a clear purpose.
+          </motion.p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
@@ -62,21 +71,53 @@ export default function Process() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="group bg-[#050505]/40 border border-white/5 backdrop-blur-[16px] rounded-2xl p-4 md:p-5 lg:p-6 relative hover:bg-[#050505]/60 hover:border-[#FF1E1E]/10 hover:-translate-y-[2px] transition-all duration-400"
+              className="group backdrop-blur-[16px] rounded-2xl p-4 md:p-5 lg:p-6 relative hover:-translate-y-[2px] transition-all duration-400"
+              style={{
+                background: 'linear-gradient(135deg, rgba(255,30,30,0.07) 0%, rgba(5,5,5,0.5) 60%)',
+                border: '1px solid rgba(255,30,30,0.18)',
+              }}
             >
               <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-5">
-                <div className={`w-9 md:w-10 h-9 md:h-10 rounded-full flex items-center justify-center text-small font-bold ${step.highlight ? 'bg-[#FF1E1E] text-white shadow-[0_0_15px_rgba(255,30,30,0.4)]' : 'bg-[#FF1E1E]/10 border border-[#FF1E1E]/20 text-[#FF1E1E]'}`}>
+                <div className={`w-9 md:w-10 h-9 md:h-10 rounded-full flex items-center justify-center text-small font-bold ${step.highlight ? 'bg-[#FF1E1E] text-white shadow-[0_0_20px_rgba(255,30,30,0.5)]' : 'bg-[#FF1E1E]/15 border border-[#FF1E1E]/35 text-[#FF1E1E]'}`}>
                   {step.number}
                 </div>
                 {i < steps.length - 1 && (
-                  <div className="hidden lg:block flex-1 h-px bg-[linear-gradient(90deg,rgba(255,30,30,0.15),transparent)]" />
+                  <div className="hidden lg:block flex-1 h-px bg-[linear-gradient(90deg,rgba(255,30,30,0.3),transparent)]" />
                 )}
               </div>
-              <h3 className="text-h3 font-bold tracking-tight mb-2">{step.title}</h3>
-              <p className="text-small text-neutral-500 leading-relaxed">{step.description}</p>
-              <div className={`mt-4 text-[10px] uppercase tracking-widest font-bold ${step.highlight ? 'text-[#FF1E1E]' : 'text-neutral-600'}`}>
+              {step.highlight ? (
+                <h3 className="mb-2">
+                  <span
+                    className="block w-full px-4 py-1.5 rounded-lg text-h3 font-bold uppercase"
+                    style={{
+                      background: 'linear-gradient(135deg, #7B5E00 0%, #C8960C 20%, #FFD700 40%, #FFFACD 55%, #DAA520 75%, #7B5E00 100%)',
+                      color: '#1a0e00',
+                      letterSpacing: '0.08em',
+                      boxShadow: '0 2px 12px rgba(255,215,0,0.25), inset 0 1px 0 rgba(255,255,255,0.3)',
+                    }}
+                  >
+                    {step.title}
+                  </span>
+                </h3>
+              ) : (
+                <h3 className="mb-2">
+                  <span
+                    className="block w-full px-4 py-1.5 rounded-lg text-h3 font-bold uppercase"
+                    style={{
+                      background: 'linear-gradient(135deg, #4a4a4a 0%, #9a9a9a 20%, #d8d8d8 40%, #ffffff 55%, #b0b0b0 75%, #4a4a4a 100%)',
+                      color: '#1a1a1a',
+                      letterSpacing: '0.08em',
+                      boxShadow: '0 2px 12px rgba(200,200,200,0.15), inset 0 1px 0 rgba(255,255,255,0.4)',
+                    }}
+                  >
+                    {step.title}
+                  </span>
+                </h3>
+              )}
+              <p className="text-small text-neutral-400 font-bold leading-relaxed">{step.description}</p>
+              <span className="mt-4 inline-flex items-center text-[10px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-md text-white/60 bg-white/[0.07] border border-white/[0.12]">
                 {step.timeline}
-              </div>
+              </span>
             </motion.div>
           ))}
         </div>

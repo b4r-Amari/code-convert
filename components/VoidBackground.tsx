@@ -130,6 +130,8 @@ const FRAG = `
 
 export default function VoidBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const animLayerRef = useRef<HTMLDivElement>(null);
+  const redOverlayRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef(0);
   const scrollVelRef = useRef(0);
 
@@ -137,6 +139,22 @@ export default function VoidBackground() {
     const handleScroll = (e: any) => {
       scrollRef.current = e.detail.scroll;
       scrollVelRef.current = e.detail.scrollVel;
+
+      const partnersEl = document.getElementById('partners');
+      if (partnersEl) {
+        const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+        if (totalScroll > 0) {
+          const fadeStart = (partnersEl.offsetTop - window.innerHeight * 0.5) / totalScroll;
+          const fadeEnd = fadeStart + 0.1;
+          const prog = e.detail.scroll as number;
+          let t = 0;
+          if (prog >= fadeEnd) t = 1;
+          else if (prog > fadeStart) t = (prog - fadeStart) / (fadeEnd - fadeStart);
+          const animOpacity = 1 - t;
+          if (animLayerRef.current) animLayerRef.current.style.opacity = String(animOpacity);
+          if (redOverlayRef.current) redOverlayRef.current.style.opacity = String(t);
+        }
+      }
     };
     window.addEventListener('app-scroll', handleScroll, { passive: true });
     return () => {
@@ -348,9 +366,22 @@ export default function VoidBackground() {
 
   return (
     <div className="fixed inset-0 z-0 pointer-events-none bg-[#050505]">
-      <canvas ref={canvasRef} className="w-full h-full opacity-40 sm:opacity-50" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(5,5,5,0.95)_100%)]" />
-      <div className="absolute inset-0 bg-[#050505]/40" />
+      {/* Animation layer — fades out as user scrolls into Partners */}
+      <div ref={animLayerRef} className="absolute inset-0" style={{ transition: 'opacity 0.15s linear' }}>
+        <canvas ref={canvasRef} className="w-full h-full opacity-40 sm:opacity-50" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(5,5,5,0.95)_100%)]" />
+        <div className="absolute inset-0 bg-[#050505]/40" />
+      </div>
+      {/* Red overlay — fades in to replace animation */}
+      <div
+        ref={redOverlayRef}
+        className="absolute inset-0"
+        style={{
+          opacity: 0,
+          transition: 'opacity 0.15s linear',
+          background: 'radial-gradient(ellipse 140% 90% at 50% 60%, rgba(200,10,10,0.22) 0%, rgba(100,0,0,0.12) 45%, transparent 70%)',
+        }}
+      />
     </div>
   );
 }

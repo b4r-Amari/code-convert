@@ -21,9 +21,9 @@ export default function SelectedWork({ projects }: SelectedWorkProps) {
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-small font-bold tracking-wide uppercase border border-white/5 bg-white/2 text-white/40 mb-4 md:mb-5 mx-auto"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-small font-bold tracking-wide uppercase border border-white/20 bg-white/2 text-white/60 mb-4 md:mb-5 mx-auto"
             >
-              Selected Case Studies
+              Selected Work
             </motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 16 }}
@@ -32,19 +32,18 @@ export default function SelectedWork({ projects }: SelectedWorkProps) {
               transition={{ delay: 0.1 }}
               className="text-h2 font-bold tracking-tight px-4"
             >
-              Growth we've<br /><span className="bg-[linear-gradient(135deg,#FF1E1E_0%,#FF5555_50%,#FF1E1E_100%)] bg-clip-text text-transparent">engineered</span>
+              Brand Visibility<br /><span className="bg-[linear-gradient(135deg,#FF1E1E_0%,#FF5555_50%,#FF1E1E_100%)] bg-clip-text text-transparent">Done Right</span>
             </motion.h2>
           </div>
-          <motion.a
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            href="/case-studies"
-            className="inline-flex items-center gap-1.5 text-xs text-neutral-500 hover:text-white transition-colors mt-2"
+            transition={{ delay: 0.2 }}
+            className="text-body text-neutral-400 font-bold leading-relaxed max-w-lg mx-auto px-4"
           >
-            View all case studies
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </motion.a>
+            From concept to execution, here's a look at how we've helped businesses show up with clarity, confidence and purpose.
+          </motion.p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
@@ -63,7 +62,7 @@ export default function SelectedWork({ projects }: SelectedWorkProps) {
             href="/case-studies"
             className="inline-flex items-center gap-2 px-6 py-3 bg-[#FF1E1E] hover:bg-[#FF1E1E]/90 text-white font-bold rounded-lg transition-colors"
           >
-            View More
+            Explore Our Work →
           </a>
         </motion.div>
       </div>
@@ -120,7 +119,7 @@ function ProjectCard({ project, index }: { project: CaseStudy; index: number }) 
           <ArrowUpRight className="w-3.5 md:w-4 h-3.5 md:h-4 text-neutral-600 group-hover:text-white transition-colors duration-300" />
         </div>
         <h3 className="text-h3 font-bold tracking-tight mb-2">{project.client}</h3>
-        <div className="text-small text-neutral-500 leading-relaxed mb-4 md:mb-5" dangerouslySetInnerHTML={{ __html: (project.results ?? '').substring(0, 150) + '...' }} />
+        <div className="text-small text-neutral-400 font-bold leading-relaxed mb-4 md:mb-5" dangerouslySetInnerHTML={{ __html: (project.results ?? '').substring(0, 150) + '...' }} />
         <div className="flex flex-wrap gap-1.5">
           {project.services?.slice(0, 3).map((tag) => (
             <span key={tag} className="text-[10px] font-bold text-neutral-600 px-2.5 py-1 rounded-md bg-white/3 uppercase tracking-wider">
