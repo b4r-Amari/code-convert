@@ -41,12 +41,12 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
           <img
             src="/brand-logos/peak-activewear.png"
             alt="Peak Activewear"
-            className="h-5 sm:h-6 md:h-6 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
+            className="h-8 sm:h-9 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
           />
           <img
             src="/brand-logos/thriveearth-transparent.png"
             alt="ThriveEarth Hydroseeding"
-            className="h-14 sm:h-16 md:h-20 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
+            className="h-11 sm:h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
             style={{ filter: 'grayscale(1) invert(1)' }}
           />
         </motion.div>
