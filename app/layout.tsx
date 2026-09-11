@@ -69,7 +69,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`overflow-x-hidden ${inter.variable}`}>
+    <html lang="en" className={`overflow-x-clip ${inter.variable}`}>
       <head>
         {/* Google tag (gtag.js) */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-H8B061SJJK"></script>
@@ -87,7 +87,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="overflow-x-hidden">
+      <body className="overflow-x-clip">
         {children}
         <Toaster position="top-center" richColors />
       </body>

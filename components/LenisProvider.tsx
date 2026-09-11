@@ -31,7 +31,7 @@ export default function LenisProvider({ children }: { children: React.ReactNode 
   }, []);
 
   return (
-    <div className="relative selection:bg-[#FF1E1E]/20 selection:text-white overflow-x-hidden">
+    <div className="relative selection:bg-[#FF1E1E]/20 selection:text-white overflow-x-clip">
       <Loader />
       <VoidBackground />
       <InteractiveCursor />

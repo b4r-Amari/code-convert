@@ -131,7 +131,21 @@ export default function Services() {
           </motion.p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+        {/* Mobile: sticky scroll stack */}
+        <div className="sm:hidden flex flex-col gap-3">
+          {services.map((service, i) => (
+            <div
+              key={i}
+              className="sticky"
+              style={{ top: `calc(5rem + ${i * 2}px)`, zIndex: i + 1 }}
+            >
+              <ServiceCard service={service} index={i} />
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop: grid */}
+        <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {services.map((service, i) => (
             <ServiceCard key={i} service={service} index={i} />
           ))}
