@@ -5,13 +5,6 @@ import { Printer, MapPin } from 'lucide-react';
 import React, { useState } from 'react';
 import type { LucideIcon } from 'lucide-react';
 
-const KlaviyoIcon = () => (
-  <svg viewBox="0 0 48 48" width="18" height="18" xmlns="http://www.w3.org/2000/svg">
-    <rect width="48" height="48" rx="8" fill="#1A1A1A"/>
-    <text x="9" y="34" fontFamily="Arial, sans-serif" fontWeight="900" fontSize="28" fill="white">K</text>
-  </svg>
-);
-
 type Logo = { name: string; node: React.ReactNode };
 type ServiceItem = {
   icon?: LucideIcon;
@@ -71,7 +64,7 @@ const services: ServiceItem[] = [
   },
   {
     logos: [
-      { name: 'Klaviyo', node: <KlaviyoIcon /> },
+      { name: 'Klaviyo', node: <BrandImg src="/brand-logos/klaviyo.svg" alt="Klaviyo" /> },
       { name: 'Adobe', node: <BrandImg src="/brand-logos/adobe.svg" alt="Adobe" /> },
     ],
     accent: '#FF4500',
